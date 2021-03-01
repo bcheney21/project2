@@ -18,7 +18,7 @@
 * As a user I will be able to view restaurants through either search queries or based on my location (or both) and add resturants to my favorites list. 
 * As a user I will be able to view a page with a list of my favorites resturants and remove resturants if I wish. 
 ## Explanation of APIs to be used: 
-i will be using the Google Places API(https://developers.google.com/maps/documentation/places/web-service/get-api-key). This API requires an API key snd will allow me to search for restaurants by the users location. 
+i will be using the Documenu API(https://documenu.com/docs#preview_api). This API requires an API key and will allow me to search for restaurants by the users location. 
 ## Daily Sprints:
 
 ## Wireframes:
@@ -32,6 +32,6 @@ i will be using the Google Places API(https://developers.google.com/maps/documen
 ### 4. The user can see all of their favorites and remove them from the list if they wish. Stretch: User is able to click a button on this page to randomly generate a restaurant from this list for them to eat at.
 ![Log out page](logoutpage.png)
 ### 5. Use can logout of their account.
-## Database ERDs:
-
+## Database ERD:
+![ERD image](ERD.png)
 ## RESTful routing chart:
