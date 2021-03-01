@@ -22,7 +22,16 @@ i will be using the Google Places API(https://developers.google.com/maps/documen
 ## Daily Sprints:
 
 ## Wireframes:
-
+![Login page](loginpage.png)
+### 1. User is able to login or create a new account.
+![Finding restaurants page](findRestaurants.png)
+### 2. User enters their location in order to find restaurants in their area.
+![Restaurants page](restaurantsPage.png)
+### 3. Restaurants near the user are displayed and the user can add restaurants to their favorites. Stretch: User would be able to click on each restaurant to get more information on it. 
+![Favorite restaurants page](favoritesPage.png)
+### 4. The user can see all of their favorites and remove them from the list if they wish. Stretch: User is able to click a button on this page to randomly generate a restaurant from this list for them to eat at.
+![Log out page](logoutpage.png)
+### 5. Use can logout of their account.
 ## Database ERDs:
 
 ## RESTful routing chart:
