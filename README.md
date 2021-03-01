@@ -20,6 +20,29 @@
 ## Explanation of APIs to be used: 
 i will be using the Documenu API(https://documenu.com/docs#preview_api). This API requires an API key and will allow me to search for restaurants by the users location. 
 ## Daily Sprints:
+* Monday: 
+    * Plan database ERD
+    * Test API
+    * Plan routes
+    * Put together wireframes
+* Tuesday: 
+    * Create db models and test db
+    * Stub routes and test routes
+    * Build routes
+* Wednesday:
+    * Finish routes 
+    * Create views
+* Thursday:
+    * Hopefully hit MVP
+    * Finish views
+* Friday:
+    * Debug and refactor code 
+    * Style views
+* Saturday: 
+    * style views in CSS
+    * FOcus on stretch goals
+* Sunday:
+    * Finish started stretch goals 
 
 ## Wireframes:
 ![Login page](loginpage.png)
