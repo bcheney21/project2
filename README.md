@@ -1,7 +1,5 @@
-# Restaurant Finder 
-### Brinn Cheney
-## Description:
-
+# Hangry
+### Hungry but frustrated trying to decide where to eat? You're probably starting to get hangry. Use Hangry to browse restaurants in your area and save your favorites. When you can't make up your mind, simply go to your favorites to jog your memory and help you satisfy your cravings!
 ## MVP Goals:
 * Users are able to login and log out.
 * Users favorited restaurants are stored.
@@ -58,3 +56,11 @@ i will be using the Documenu API(https://documenu.com/docs#preview_api). This AP
 ## Database ERD:
 ![ERD image](ERD.png)
 ## RESTful routing chart:
+Method | Url | Functionality | View
+-------| ----|---------------|------
+GET    | /restaurants | List all restaurants | Show /restaurants
+GET    | /restaurants/:id | View one restaurant | Redirect to /restaurants
+POST   | /users | Create new user | redirect to index.ejs
+POST   | /restaurants | Add a restaurant to favorites | Redirect to /userRestaurants
+PUT    | /userRestaurants | Shows a users favorites list | Redirect to /userRestaurants
+DELETE | /favorites/:id | Delete restaurant from favorites | redirect to /userRestaurants
