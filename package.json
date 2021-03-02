@@ -1,5 +1,27 @@
 {
   "dependencies": {
-    "documenu": "^1.1.0"
-  }
+    "documenu": "^1.1.0",
+    "express": "^4.17.1",
+    "pg": "^8.5.1",
+    "rowdy-logger": "^1.0.2",
+    "sequelize": "^6.5.0"
+  },
+  "name": "project2",
+  "description": "* Users are able to login and log out. * Users favorited restaurants are stored. * Restaurants a user sees are generated based off either location or search queries.  ## Stretch Goals:  * Randomly generate a restaurant for the user from their favorites list.     * Stretch Goal from Stretch Goal: Generate a random restaurant based off the type of food that want to eat. * Users are able to rate restaurants on their Covid-19 safety level.      * Sanitization, enforcement of social distancing guidelines, mask wearing, outdoor dining availability, spacing between tables... * Display the restaurant menu and hours. * Link to Postmates API to allow the user to order food.  ## User Stories: * As a user I will be able to create an account and sign in and out. * As a user I will be able to view restaurants through either search queries or based on my location (or both) and add resturants to my favorites list.  * As a user I will be able to view a page with a list of my favorites resturants and remove resturants if I wish.  ## Explanation of APIs to be used:  i will be using the Documenu API(https://documenu.com/docs#preview_api). This API requires an API key and will allow me to search for restaurants by the users location.  ## Daily Sprints: * Monday:      * Plan database ERD     * Test API     * Plan routes     * Put together wireframes * Tuesday:      * Create db models and test db     * Stub routes and test routes     * Build routes * Wednesday:     * Finish routes      * Create views * Thursday:     * Hopefully hit MVP     * Finish views * Friday:     * Debug and refactor code      * Style views * Saturday:      * style views in CSS     * FOcus on stretch goals * Sunday:     * Finish started stretch goals",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bcheney21/project2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bcheney21/project2/issues"
+  },
+  "homepage": "https://github.com/bcheney21/project2#readme"
 }

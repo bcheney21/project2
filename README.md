@@ -22,14 +22,14 @@ i will be using the Documenu API(https://documenu.com/docs#preview_api). This AP
     * Plan database ERD
     * Test API
     * Plan routes
-    * Put together wireframes
+    * Put together wireframes and user stories
 * Tuesday: 
     * Create db models and test db
-    * Stub routes and test routes
+    * Stub and test routes
     * Build routes
 * Wednesday:
     * Finish routes 
-    * Create views
+    * Create and work on views
 * Thursday:
     * Hopefully hit MVP
     * Finish views
@@ -37,10 +37,11 @@ i will be using the Documenu API(https://documenu.com/docs#preview_api). This AP
     * Debug and refactor code 
     * Style views
 * Saturday: 
-    * style views in CSS
-    * FOcus on stretch goals
+    * Style views in CSS
+    * Focus on stretch goals
 * Sunday:
     * Finish started stretch goals 
+    * Add finishing touches
 
 ## Wireframes:
 ![Login page](loginpage.png)
