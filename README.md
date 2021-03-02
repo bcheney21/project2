@@ -63,5 +63,5 @@ GET    | /restaurants | List all restaurants | Show /restaurants
 GET    | /restaurants/:id | View one restaurant | Redirect to /restaurants
 POST   | /users | Create new user | redirect to index.ejs
 POST   | /restaurants | Add a restaurant to favorites | Redirect to /userRestaurants
-PUT    | /userRestaurants | Shows a users favorites list | Redirect to /userRestaurants
-DELETE | /favorites/:id | Delete restaurant from favorites | redirect to /userRestaurants
+PUT    | /userRestaurants | Shows a users favorites list | Redirect to /favorites
+DELETE | /favorites/:id | Delete restaurant from favorites | redirect to /favorites
