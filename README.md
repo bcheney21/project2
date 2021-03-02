@@ -59,9 +59,8 @@ i will be using the Documenu API(https://documenu.com/docs#preview_api). This AP
 ## RESTful routing chart:
 Method | Url | Functionality | View
 -------| ----|---------------|------
-GET    | /restaurants | List all restaurants | Show /restaurants
-GET    | /restaurants/:id | View one restaurant | Redirect to /restaurants
+GET    | /favorites/:id | View one restaurant | Redirect to /favorites
 POST   | /users | Create new user | redirect to index.ejs
-POST   | /restaurants | Add a restaurant to favorites | Redirect to /userRestaurants
-PUT    | /userRestaurants | Shows a users favorites list | Redirect to /favorites
+POST   | /favorites | Add a restaurant to favorites | Redirect to /favorites
+GET    | /favorites | Shows a users favorites list | Redirect to /favorites
 DELETE | /favorites/:id | Delete restaurant from favorites | redirect to /favorites

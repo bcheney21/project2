@@ -1,0 +1,10 @@
+<h1>Restaurants near you</h1>
+<% restaurants.forEach(restaurant => { %>
+    <div>
+        <h3><%= restaurant.restaurant_name%></h3>
+        <form method="POST" action="/favorites">
+            <input type="hidden" name="name" value="<%= restaurant%>">
+            <input type="submit" value="Add to favorites">
+        </form>
+    </div>
+<% }) %>
