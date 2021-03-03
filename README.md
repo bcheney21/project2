@@ -29,8 +29,10 @@ i will be using the Documenu API(https://documenu.com/docs#preview_api). This AP
     * Build routes
 * Wednesday:
     * Finish routes 
+    * Start on login/logout/auth
     * Create and work on views
 * Thursday:
+    * Finish login/logout/auth
     * Hopefully hit MVP
     * Finish views
 * Friday:
