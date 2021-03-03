@@ -1,0 +1,36 @@
+nav {
+    background-color: grey;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+}
+
+nav a:hover {
+    color: coral;
+}
+
+#fav-button{
+    text-align: center;
+    float: right;
+    color: orange;
+    border: 1px solid red;
+}
+
+h1{
+    color: red;
+    text-align: center;
+}
+
+h3{
+    color: red;
+
+}
+p {
+    color: orange;
+}

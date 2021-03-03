@@ -6,6 +6,7 @@ const axios = require('axios')
 const morgan = require('morgan')
 require('dotenv').config()
 const db = require('./models')
+const cryptoJS = require('crypto-js')
 
 const API_KEY = process.env.API_KEY
 const app = express()
@@ -20,15 +21,16 @@ app.use(ejsLayouts)
 app.use(morgan('dev'))
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: false }))
+app.use(require('cookie-parser')())
 
 
 // controllers
+app.use('/favorites', require('./controllers/favoritesController'))
 // routes
 
 app.get('/', async (req, res) => {
     try {
         let response = await Documenu.Restaurants.getByZipCode('93103') 
-        console.log(response)
         res.render('index', { restaurants: response.data })
     } catch (error) {
         console.log(error)
