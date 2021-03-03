@@ -26,6 +26,8 @@ app.use(require('cookie-parser')())
 
 // controllers
 app.use('/favorites', require('./controllers/favoritesController'))
+app.use('/auth', require('./controllers/authController'))
+
 // routes
 
 app.get('/', async (req, res) => {
