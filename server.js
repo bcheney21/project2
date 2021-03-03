@@ -38,7 +38,25 @@ app.get('/', async (req, res) => {
         console.log(error)
     }
 })
-
+app.use(async (req, res, next) => {
+    if (req.cookies.userId) {
+        const decryptedId = cryptoJS.AES.decrypt(req.cookies.userId, process.env.COOKIE_SECRET).toString(cryptoJS.enc.Utf8)
+        
+        // console.log(decryptedId);
+        // await db.user.findByPk(decryptedId)
+        const user = await db.user.findOne({
+            where: {
+                id: decryptedId
+            }
+        })
+        
+        res.locals.user = user
+    } else {
+        res.locals.user = null
+    }
+    
+    next()
+})
 // add a restaurant to favorites - POST /favorites 
 
 // create new user - POST /users
