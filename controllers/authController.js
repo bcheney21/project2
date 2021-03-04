@@ -14,7 +14,7 @@ router.get('/new', (req, res) => {
 
 // Create user
 router.post('/', async (req, res) => {
-    const hashedPassword = bcrypt.hashSync(req.body.password, 12)
+    const hashPassword = bcrypt.hashSync(req.body.password, 12)
 
     try {
         if(!req.body.username || !req.body.password) {
@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
 
         const user = await db.user.create({
             username: req.body.username,
-            password: hashedPassword,
+            password: hashPassword,
             zipcode: req.body.zipcode
         })
 
@@ -34,8 +34,8 @@ router.post('/', async (req, res) => {
         const encryptedId = AES.encrypt(user.id.toString(), process.env.COOKIE_SECRET).toString()
         res.cookie('userId', encryptedId)
         res.redirect('/')
-    } catch (err) {
-        console.log( err)
+    } catch (error) {
+        console.log(error)
         res.render('auth/new')
     }
 })
@@ -54,12 +54,12 @@ router.post('/login', async (req, res) => {
             res.cookie('userId', encryptedId)
             res.redirect('/')
         } else {
-            res.render("auth/login", { errors: "Invalid login" })
+            res.render("auth/login", { errors: "Invalid login. Please try again." })
         }
 
-    } catch (err) {
-        console.log(err)
-        res.render('auth/login', { errors: "Invalid login" })
+    } catch (error) {
+        console.log(error)
+        res.render('auth/login', { errors: "Invalid login. Please try again." })
     }
 })
 
