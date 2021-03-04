@@ -28,11 +28,12 @@ i will be using the Documenu API(https://documenu.com/docs#preview_api). This AP
     * Stub and test routes
     * Build routes
 * Wednesday:
-    * Finish routes 
+    * work on routes 
     * Start on login/logout/auth
     * Create and work on views
 * Thursday:
     * Finish login/logout/auth
+    * Finish routes
     * Hopefully hit MVP
     * Finish views
 * Friday:

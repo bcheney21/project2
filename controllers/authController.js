@@ -18,14 +18,15 @@ router.post('/', async (req, res) => {
 
     try {
         if(!req.body.username || !req.body.password) {
-            res.render('auth/new', { errors: 'Invalid input'})
+            res.render('auth/new', { errors: 'Invalid input. Please try again.'})
             return;
         }
 
 
         const user = await db.user.create({
             username: req.body.username,
-            password: hashedPassword
+            password: hashedPassword,
+            zipcode: req.body.zipcode
         })
 
         console.log(res.locals.user)
@@ -39,5 +40,27 @@ router.post('/', async (req, res) => {
     }
 })
 
+// Login user
+router.post('/login', async (req, res) => {
+    try {
+        const user = await db.user.findOne({
+            where: {
+                username: req.body.username 
+                }
+        })
+
+        if(user && bcrypt.compareSync(req.body.password, user.password)) {
+            const encryptedId = AES.encrypt(user.id.toString(), process.env.COOKIE_SECRET).toString()
+            res.cookie('userId', encryptedId)
+            res.redirect('/')
+        } else {
+            res.render("auth/login", { errors: "Invalid login" })
+        }
+
+    } catch (err) {
+        console.log(err)
+        res.render('auth/login', { errors: "Invalid login" })
+    }
+})
 
 module.exports = router

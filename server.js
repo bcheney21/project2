@@ -7,7 +7,6 @@ const morgan = require('morgan')
 require('dotenv').config()
 const db = require('./models')
 const cryptoJS = require('crypto-js')
-
 const API_KEY = process.env.API_KEY
 const app = express()
 const rowdyResults = rowdy.begin(app)
@@ -29,7 +28,16 @@ app.use('/favorites', require('./controllers/favoritesController'))
 app.use('/auth', require('./controllers/authController'))
 
 // routes
-
+async function syncDB() {
+    try {
+      await db.sync({ force: false });
+      console.log('Database connected');
+    } catch (error) {
+      console.error('error synching database', error);
+    }
+  }
+  syncDB(); 
+  
 app.get('/', async (req, res) => {
     try {
         let response = await Documenu.Restaurants.getByZipCode('93103') 
