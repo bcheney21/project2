@@ -3,39 +3,29 @@ const morgan = require('morgan')
 require('dotenv').config()
 const { default: axios } = require('axios')
 const db = require('../models')
+const { get } = require('./authController')
+const cryptoJs = require('crypto-js')
 const Documenu = require('documenu')
 const API_KEY = process.env.API_KEY
 Documenu.configure(API_KEY)
 
-// Documenu.favorites.get(4072702673999819)
-// .then(res=> {
-//     console.log(res);
-// });
-
-router.get('/', async (req, res) => {
-    try {
-        const favorites = await db.favorite.findOne({ 
-            where: {
-                name: "the daily grind" 
-            }
-        })
-        console.log(favorites.data)
-
-        res.render('favorites/index', { favorites: favorites.data })
-    } catch (error) {
-        console.log(error)
-        // res.redirect('/')
-    }
-})
-
+router.get('/index' , (req, res) => {
+    res.render('favorites/index')
+}) 
 router.post('/', async (req, res) => {
-    console.log(req.body)
-    try {
-        const [newFav, created] = await Documenu.Restaurants.get(req.body.restaurantid)
-        // console.log(created);
-        res.locals.favorites.addFav(newFav);
-        res.redirect(`/favorites`)
-    } catch (err) {
+    try{
+        const decryptedId = cryptoJs.AES.decrypt(req.cookies.userId, 'super secret string')
+        const decryptedIdString = decryptedId.toString(cryptoJs.enc.Utf8)
+        
+        const user = await models.user.findByPk(decryptedIdString)
+        
+        console.log(user.id)
+        const restaurant = await models.favorite.create({
+            name: req.body.name,
+            userId: user.id,
+        })
+        res.redirect('/favorite/:id/index')
+    }catch(err){
         console.log(err)
     }
 })

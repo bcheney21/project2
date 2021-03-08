@@ -22,6 +22,15 @@ const db = require('./models');
 //   console.log('Created: ', rest.username)
 // })
 
+const findUserTest = async () => {
+    const foundUser = await db.user.findOne({
+        where: {
+            username: 'brinnc@uw.edu'
+        }
+    })
+    console.log('found', foundUser.username)
+}
+findUserTest();
 // db.user.findOne({
 // where: {
 //   username: 'brinnc@uw.edu'

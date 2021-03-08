@@ -1,66 +1,52 @@
 const router = require('express').Router()
-const db = require('../models')
-const bcrypt = require('bcrypt')
-const AES = require('crypto-js/aes')
+const models = require('../models')
+const dotenv = require('dotenv')
+const cryptoJs = require('crypto-js')
+const { mode } = require('crypto-js')
 
-router.get('/login', (req, res) => {
-    res.render('auth/login', { errors: null })
+router.get('/new' , async (req, res) => {
+    res.render('auth/new')
 })
 
-// Display signup page
-router.get('/new', (req, res) => {
-    res.render('auth/new', { errors: null })
-})
-
-// Create user
 router.post('/', async (req, res) => {
-    const hashPassword = bcrypt.hashSync(req.body.password, 12)
-
     try {
-        if(!req.body.username || !req.body.password) {
-            res.render('auth/new', { errors: 'Invalid input. Please try again.'})
-            return;
-        }
-
-
-        const user = await db.user.create({
+        const user = await models.user.create({
             username: req.body.username,
-            password: hashPassword,
+            password: req.body.password,
             zipcode: req.body.zipcode
         })
-
-        console.log(res.locals.user)
-
-        const encryptedId = AES.encrypt(user.id.toString(), process.env.COOKIE_SECRET).toString()
-        res.cookie('userId', encryptedId)
+        const encryptedId = cryptoJs.AES.encrypt(user.id.toString(), 'secret')
+        const stringEncryptedId = encryptedId.toString()
+        res.cookie('userId', stringEncryptedId)
         res.redirect('/')
-    } catch (error) {
+    } catch(error) {
         console.log(error)
-        res.render('auth/new')
     }
+
 })
 
-// Login user
+router.get('/login', async (req, res) => {
+    res.render('auth/login')
+})
+
 router.post('/login', async (req, res) => {
-    try {
-        const user = await db.user.findOne({
-            where: {
-                username: req.body.username 
-                }
-        })
-
-        if(user && bcrypt.compareSync(req.body.password, user.password)) {
-            const encryptedId = AES.encrypt(user.id.toString(), process.env.COOKIE_SECRET).toString()
-            res.cookie('userId', encryptedId)
-            res.redirect('/')
-        } else {
-            res.render("auth/login", { errors: "Invalid login. Please try again." })
+    const user = await models.user.findOne({
+        where: {
+        username: req.body.username
         }
-
-    } catch (error) {
-        console.log(error)
-        res.render('auth/login', { errors: "Invalid login. Please try again." })
+    })
+    if(user.password === req.body.password){
+        const encryptedId = cryptoJs.AES.encrypt(user.id.toString(), 'secret')
+        const stringEncryptedId = encryptedId.toString()
+        res.cookie('userId', stringEncryptedId)
+        res.redirect('/')
+    } else{
+        res.render('auth/login')
     }
 })
 
+router.get('/logout', async (req, res) => {
+    res.clearCookie('userId')
+    res.redirect('/')
+})
 module.exports = router

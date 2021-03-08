@@ -1,15 +1,11 @@
 <h1>Login</h1>
 
-<% if (errors) { %>
-    <%= errors %>
-<% } %>
-
 <form method="POST" method="/auth/login">
-    <label for="user">Username:</label>
-    <input type="text" name="username" id="user">
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username">
     <br>
-    <label for="pass">Password:</label>
-    <input type="password" name="password" id="pass">
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password">
     <br>
     <input type="submit" value="Log in">
 </form>

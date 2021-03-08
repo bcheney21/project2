@@ -28,15 +28,6 @@ app.use('/favorites', require('./controllers/favoritesController'))
 app.use('/auth', require('./controllers/authController'))
 
 // routes
-async function syncDB() {
-    try {
-      await db.sync({ force: false });
-      console.log('Database connected');
-    } catch (error) {
-      console.error('error synching database', error);
-    }
-  }
-  syncDB(); 
   
 app.get('/', async (req, res) => {
     try {
@@ -47,23 +38,20 @@ app.get('/', async (req, res) => {
     }
 })
 app.use(async (req, res, next) => {
-    if (req.cookies.userId) {
-        const decryptedId = cryptoJS.AES.decrypt(req.cookies.userId, process.env.COOKIE_SECRET).toString(cryptoJS.enc.Utf8)
+    if(req.cookies.userId){
+
+        const decryptedId = cryptoJs.AES.decrypt(req.cookies.userId, 'super secret string')
+        const decryptedIdString = decryptedId.toString(cryptoJs.enc.Utf8)
         
-        // console.log(decryptedId);
-        // await db.user.findByPk(decryptedId)
-        const user = await db.user.findOne({
-            where: {
-                id: decryptedId
-            }
-        })
+        const user = await models.user.findByPk(decryptedIdString)
         
-        res.locals.user = user
-    } else {
+      res.locals.user = user
+    }else{
         res.locals.user = null
     }
     
     next()
+    
 })
 // add a restaurant to favorites - POST /favorites 
 
